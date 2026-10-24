@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valle Celestial - Resort & Eco-Lodge</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#f6d365',
+                            500: '#d4af37',
+                            600: '#aa820a',
+                        },
+                        dark: {
+                            900: '#0b0f19',
+                            800: '#111827',
+                            700: '#1f2937',
+                            600: '#374151',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
+        
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fef08a 0%, #d4af37 50%, #9a3412 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(31, 41, 55, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-gray-200 font-sans antialiased selection:bg-gold-500 selection:text-black">
+
+    <!-- NAVIGATION HEADER -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 glass-panel border-b border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-12">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-full border border-gold-500/50 flex items-center justify-center bg-dark-800 group-hover:border-gold-400 transition-colors">
+                        <i class="fa-solid font-serif text-gold-500 text-xl font-bold">V</i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider text-white block leading-tight">VALLE CELESTIAL</span>
+                        <span class="text-[9px] uppercase tracking-widest text-gold-500 block font-semibold">Resort & Luxury Experience</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#inicio" class="text-white hover:text-gold-400 transition-colors py-1">Inicio</a>
+                    <a href="#experiencias" class="text-gray-300 hover:text-gold-400 transition-colors py-1">Experiencias</a>
+                    <a href="#instalaciones" class="text-gray-300 hover:text-gold-400 transition-colors py-1">Instalaciones</a>
+                    <a href="#guia-local" class="text-gray-300 hover:text-gold-400 transition-colors py-1 flex items-center gap-1.5">
+                        <i class="fa-solid fa-map-location-dot text-gold-500"></i> Guía Local
+                    </a>
+                    <a href="#blog" class="text-gray-300 hover:text-gold-400 transition-colors py-1">Blog & Rutas</a>
+                    <a href="#contacto" class="text-gray-300 hover:text-gold-400 transition-colors py-1">Contacto</a>
+                </nav>
+
+                <!-- Book CTA Button -->
+                <div class="hidden sm:flex items-center">
+                    <a href="#reservas" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-dark-900 font-semibold text-sm transition-all transform hover:scale-105 shadow-lg shadow-gold-500/10">
+                        <i class="fa-solid fa-calendar-check mr-2"></i>Reservar
+                    </a>
+                </div>
+
+                <!-- Mobile menu toggle button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="text-gray-300 hover:text-gold-400 focus:outline-none p-2" aria-label="Abrir menú">
+                        <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-gray-800 px-4 pt-4 pb-6 mt-2 space-y-3">
+            <a href="#inicio" class="mobile-link block py-2 text-white font-medium border-b border-gray-800">Inicio</a>
+            <a href="#experiencias" class="mobile-link block py-2 text-gray-300 hover:text-gold-400 border-b border-gray-800">Experiencias</a>
+            <a href="#instalaciones" class="mobile-link block py-2 text-gray-300 hover:text-gold-400 border-b border-gray-800">Instalaciones</a>
+            <a href="#guia-local" class="mobile-link block py-2 text-gold-400 border-b border-gray-800 flex items-center gap-2">
+                <i class="fa-solid fa-map-location-dot"></i> Guía Local & SEO
+            </a>
+            <a href="#blog" class="mobile-link block py-2 text-gray-300 hover:text-gold-400 border-b border-gray-800">Blog & Rutas</a>
+            <a href="#contacto" class="mobile-link block py-2 text-gray-300 hover:text-gold-400 border-b border-gray-800">Contacto</a>
+            <a href="#reservas" class="mobile-link block text-center py-3 mt-4 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 text-dark-900 font-bold">
+                Reservar Ahora
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=2000&q=80" 
+                 alt="Resort De Lujo" 
+                 class="w-full h-full object-cover object-center transform scale-105 animate-pulse" 
+                 style="animation-duration: 12s;"
+                 onerror="this.src='https://placehold.co/1920x1080/111827/d4af37?text=Valle+Celestial+Resort'">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/70 to-dark-900/40"></div>
+            <div class="absolute inset-0 bg-black/30 backdrop-blur-[1px]"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-12">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border border-gold-500/30 text-gold-400 text-xs sm:text-sm font-medium tracking-widest uppercase mb-6">
+                <i class="fa-solid fa-star text-gold-500 text-xs"></i> Experiencia De Lujo & Naturaleza
+            </div>
+            
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight leading-tight mb-6">
+                Redescubre la Serenidad en <span class="gold-gradient-text block mt-2">Valle Celestial</span>
+            </h1>
+            
+            <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+                Un santuario de descanso, gastronomía de autor y aventura privada en el corazón de la montaña. Recomendado por la comunidad global de exploradores.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#reservas" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-dark-900 font-bold text-base transition-all transform hover:-translate-y-0.5 shadow-xl shadow-gold-500/20">
+                    <i class="fa-solid fa-calendar-alt mr-2"></i> Reservar Estancia
+                </a>
+                <a href="#guia-local" class="w-full sm:w-auto px-8 py-4 rounded-full glass-panel hover:bg-gray-800/80 text-white font-medium text-base border border-gray-700 hover:border-gold-500/50 transition-all">
+                    <i class="fa-solid fa-compass mr-2 text-gold-500"></i> Explorar Entorno
+                </a>
+            </div>
+
+            <!-- Quick Stats Bar -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-2xl glass-panel max-w-4xl mx-auto border border-gray-800">
+                <div class="text-center p-3">
+                    <div class="font-serif text-2xl sm:text-3xl font-bold text-gold-400">4.9 ★</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Valoración Google</div>
+                </div>
+                <div class="text-center p-3 border-l border-gray-800">
+                    <div class="font-serif text-2xl sm:text-3xl font-bold text-white">51M+</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Vistas en Maps</div>
+                </div>
+                <div class="text-center p-3 border-l border-gray-800">
+                    <div class="font-serif text-2xl sm:text-3xl font-bold text-gold-400">100%</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Eco-Sostenible</div>
+                </div>
+                <div class="text-center p-3 border-l border-gray-800">
+                    <div class="font-serif text-2xl sm:text-3xl font-bold text-white">12+</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Rutas Exclusivas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESORT AMENITIES / HIGHLIGHTS SECTION -->
+    <section id="instalaciones" class="py-24 bg-dark-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-500 font-semibold text-xs uppercase tracking-widest">Instalaciones & Servicios</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">Experiencias Diseñadas para el Descanso</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-gold-500 to-amber-600 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" 
+                             alt="Cabañas Luxury" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/800x600/1f2937/d4af37?text=Cabanas+De+Lujo'">
+                        <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-dark-900/80 text-gold-400 text-xs font-semibold backdrop-blur-sm border border-gold-500/30">
+                            Alojamiento Premium
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Suites & Cabañas Privadas</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Espacios con vistas panorámicas al valle, chimenea privada, jacuzzis exteriores y servicio personalizado 24/7.
+                        </p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-6 border-t border-gray-800 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-wifi text-gold-500"></i> Wi-Fi Satelital Alta Velocidad</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-hot-tub-person text-gold-500"></i> Jacuzzi Térmico Privado</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" 
+                             alt="Gastronomia Local" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/800x600/1f2937/d4af37?text=Gastronomia+De+Autor'">
+                        <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-dark-900/80 text-gold-400 text-xs font-semibold backdrop-blur-sm border border-gold-500/30">
+                            Alta Cocina
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Restaurante "Cielo & Tierra"</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Gastronomía orgánica con ingredientes cultivados en nuestro propio huerto y maridaje de vinos autóctonos.
+                        </p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-6 border-t border-gray-800 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-utensils text-gold-500"></i> Menú de Pasos Orgánico</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-wine-glass text-gold-500"></i> Cava de Vinos Regionales</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" 
+                             alt="Spa y Bienestar" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/800x600/1f2937/d4af37?text=Spa+Y+Wellness'">
+                        <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-dark-900/80 text-gold-400 text-xs font-semibold backdrop-blur-sm border border-gold-500/30">
+                            Relax & Wellness
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Spa Holístico Holos</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Tratamientos con hierbas nativas, sauna de vapor, masajes descontracturantes y sesiones de yoga al amanecer.
+                        </p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-6 border-t border-gray-800 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-spa text-gold-500"></i> Terapias Naturales</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-temperature-arrow-up text-gold-500"></i> Sauna Terapéutico</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GOOGLE MAPS & LOCAL GUIDE INTEGRATION SPOTLIGHT -->
+    <section id="guia-local" class="py-24 bg-dark-800 relative border-y border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Google Local Guide Spotlight -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs font-semibold">
+                        <i class="fa-brands fa-google text-gold-500"></i> Local Guide Nivel 10
+                    </div>
+
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">
+                        Explora la Región con <span class="gold-gradient-text">Conocimiento Experto</span>
+                    </h2>
+
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        Nuestro complejo cuenta con la asesoría directa de nuestro equipo certificado como **Google Maps Local Guide Nivel 10** con más de **51 millones de visualizaciones**. Garantizamos rutas verificadas, puntos fotográficos secretos y recomendaciones auténticas.
+                    </p>
+
+                    <!-- Stats Card -->
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-xl bg-dark-900 border border-gray-700/60">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400">
+                                    <i class="fa-solid fa-eye text-lg"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-white">+51 Millones</div>
+                                    <div class="text-xs text-gray-400">Visualizaciones en Maps</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-dark-900 border border-gray-700/60">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400">
+                                    <i class="fa-solid fa-award text-lg"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-white">Nivel 10</div>
+                                    <div class="text-xs text-gray-400">Insignia Oficial Google</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Highlights List -->
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-gold-500 mt-1"></i>
+                            <p class="text-sm text-gray-300">Mapas geolocalizados interactivos descargables directamente a tu smartphone.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-gold-500 mt-1"></i>
+                            <p class="text-sm text-gray-300">Asesoramiento personalizado de rutas de senderismo y miradores fotográficos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Simulated Google Maps Interactive Pin Board -->
+                <div class="lg:col-span-6">
+                    <div class="glass-panel p-2 rounded-2xl border border-gray-700 shadow-2xl relative overflow-hidden">
+                        
+                        <!-- Map Header Bar -->
+                        <div class="bg-dark-900 px-4 py-3 rounded-t-xl flex items-center justify-between border-b border-gray-800">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                                <span class="text-xs text-gray-400 font-mono ml-2">google.com/maps/valle-celestial</span>
+                            </div>
+                            <span class="text-xs text-gold-400 font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-shield-halved"></i> Verificado
+                            </span>
+                        </div>
+
+                        <!-- Map View Simulator -->
+                        <div class="relative h-96 rounded-b-xl overflow-hidden bg-dark-900 flex items-center justify-center">
+                            <!-- Satellite Styled Map Background -->
+                            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1000&q=80" 
+                                 alt="Google Maps View" 
+                                 class="w-full h-full object-cover filter brightness-75 contrast-125"
+                                 onerror="this.src='https://placehold.co/800x600/111827/d4af37?text=Google+Maps+Interactive'">
+                            
+                            <div class="absolute inset-0 bg-dark-900/30"></div>
+
+                            <!-- Interactive Pins -->
+                            <!-- Pin 1: Resort -->
+                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+                                <div class="relative flex flex-col items-center">
+                                    <div class="px-3 py-1 bg-gold-500 text-dark-900 font-bold text-xs rounded-md shadow-lg mb-1 whitespace-nowrap animate-bounce">
+                                        ★ Valle Celestial Resort
+                                    </div>
+                                    <i class="fa-solid fa-location-dot text-4xl text-gold-500 drop-shadow-md"></i>
+                                </div>
+                            </div>
+
+                            <!-- Pin 2: Mirador -->
+                            <div class="absolute top-1/4 left-1/4 group cursor-pointer">
+                                <div class="relative flex flex-col items-center">
+                                    <div class="hidden group-hover:block px-2 py-1 bg-dark-900 text-white text-xs rounded shadow mb-1">
+                                        Mirador del Águila
+                                    </div>
+                                    <i class="fa-solid fa-camera text-2xl text-amber-400 drop-shadow-md"></i>
+                                </div>
+                            </div>
+
+                            <!-- Pin 3: Cascade -->
+                            <div class="absolute bottom-1/4 right-1/4 group cursor-pointer">
+                                <div class="relative flex flex-col items-center">
+                                    <div class="hidden group-hover:block px-2 py-1 bg-dark-900 text-white text-xs rounded shadow mb-1">
+                                        Cascada Cristalina
+                                    </div>
+                                    <i class="fa-solid fa-water text-2xl text-cyan-400 drop-shadow-md"></i>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Floating Overlay Bar -->
+                            <div class="absolute bottom-4 left-4 right-4 bg-dark-900/90 backdrop-blur-md p-3 rounded-xl border border-gray-700/80 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center">
+                                        <i class="fa-solid fa-route"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-white font-semibold">Circuito Turístico Recomendado</p>
+                                        <p class="text-[10px] text-gray-400">Actualizado semanalmente por el Guía Local</p>
+                                    </div>
+                                </div>
+                                <a href="https://maps.google.com" target="_blank" class="px-3 py-1.5 bg-gold-500 text-dark-900 font-bold text-xs rounded-lg hover:bg-gold-400 transition-colors">
+                                    Abrir Maps
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG / NEWS FEED SECTION -->
+    <section id="blog" class="py-24 bg-dark-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-gold-500 font-semibold text-xs uppercase tracking-widest">Publicaciones & Guías</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2">Novedades y Rutas de Exploración</h2>
+                </div>
+                
+                <!-- Category Filters -->
+                <div class="mt-6 md:mt-0 flex flex-wrap gap-2" id="blog-filters">
+                    <button onclick="filterBlog('todos')" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-gold-500 text-dark-900 transition-all">Todos</button>
+                    <button onclick="filterBlog('rutas')" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-dark-800 text-gray-300 hover:text-white border border-gray-700 transition-all">Rutas & Trekking</button>
+                    <button onclick="filterBlog('gastronomia')" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-dark-800 text-gray-300 hover:text-white border border-gray-700 transition-all">Gastronomía</button>
+                    <button onclick="filterBlog('consejos')" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-dark-800 text-gray-300 hover:text-white border border-gray-700 transition-all">Consejos Local Guide</button>
+                </div>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-posts-container">
+                
+                <!-- Article 1 -->
+                <article class="blog-card glass-card rounded-2xl overflow-hidden flex flex-col" data-category="rutas">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" 
+                             alt="Rutas de Senderismo" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/800x500/1f2937/d4af37?text=Rutas+Trekking'">
+                        <span class="absolute top-3 left-3 bg-dark-900/80 border border-gold-500/30 text-gold-400 text-[10px] uppercase font-bold px-2.5 py-1 rounded-full">
+                            Rutas & Trekking
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs text-gray-400 mb-2 flex items-center gap-3">
+                                <span><i class="fa-regular fa-calendar mr-1"></i> 18 Oct, 2026</span>
+                                <span><i class="fa-regular fa-clock mr-1"></i> 5 min lectura</span>
+                            </div>
+                            <h3 class="font-serif text-lg font-bold text-white mb-3 hover:text-gold-400 transition-colors">
+                                5 Senderos Secretos que Solo un Local Guide Nivel 10 Conoce
+                            </h3>
+                            <p class="text-gray-400 text-xs leading-relaxed line-clamp-3">
+                                Descubre los rincones escondidos fuera de los mapas tradicionales. Cascadas vírgenes y miradores de alta montaña recomendados.
+                            </p>
+                        </div>
+                        <button onclick="openArticleModal('5 Senderos Secretos', 'Descubre los rincones escondidos fuera de los mapas tradicionales. Esta guía incluye coordenadas GPS exactas, nivel de dificultad y la mejor hora del día para fotografiar la luz del amanecer en la cordillera.')" class="mt-6 text-gold-400 hover:text-gold-300 text-xs font-bold inline-flex items-center gap-2">
+                            Leer Artículo <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="blog-card glass-card rounded-2xl overflow-hidden flex flex-col" data-category="gastronomia">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" 
+                             alt="Platos Tipicos" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/800x500/1f2937/d4af37?text=Guia+Gastronomica'">
+                        <span class="absolute top-3 left-3 bg-dark-900/80 border border-gold-500/30 text-gold-400 text-[10px] uppercase font-bold px-2.5 py-1 rounded-full">
+                            Gastronomía
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs text-gray-400 mb-2 flex items-center gap-3">
+                                <span><i class="fa-regular fa-calendar mr-1"></i> 12 Oct, 2026</span>
+                                <span><i class="fa-regular fa-clock mr-1"></i> 4 min lectura</span>
+                            </div>
+                            <h3 class="font-serif text-lg font-bold text-white mb-3 hover:text-gold-400 transition-colors">
+                                Guía Gastronómica: Sabores Auténticos de la Montaña
+                            </h3>
+                            <p class="text-gray-400 text-xs leading-relaxed line-clamp-3">
+                                Un recorrido por los mejores restaurantes locales, picadas artesanales y la cava del complejo.
+                            </p>
+                        </div>
+                        <button onclick="openArticleModal('Guía Gastronómica', 'Explora los platillos icónicos elaborados con productos orgánicos de temporada. Además, te regalamos un mapa interactivo de Google Maps con los 7 mejores restaurantes artesanales de la comarca.')" class="mt-6 text-gold-400 hover:text-gold-300 text-xs font-bold inline-flex items-center gap-2">
+                            Leer Artículo <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="blog-card glass-card rounded-2xl overflow-hidden flex flex-col" data-category="consejos">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" 
+                             alt="Fotografia de Viaje" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/800x500/1f2937/d4af37?text=Fotografia+Y+SEO'">
+                        <span class="absolute top-3 left-3 bg-dark-900/80 border border-gold-500/30 text-gold-400 text-[10px] uppercase font-bold px-2.5 py-1 rounded-full">
+                            Consejos Local Guide
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs text-gray-400 mb-2 flex items-center gap-3">
+                                <span><i class="fa-regular fa-calendar mr-1"></i> 05 Oct, 2026</span>
+                                <span><i class="fa-regular fa-clock mr-1"></i> 6 min lectura</span>
+                            </div>
+                            <h3 class="font-serif text-lg font-bold text-white mb-3 hover:text-gold-400 transition-colors">
+                                Cómo Capturar Fotos Increíbles para Google Maps en tus Vacaciones
+                            </h3>
+                            <p class="text-gray-400 text-xs leading-relaxed line-clamp-3">
+                                Secretos fotográficos para lograr millones de vistas en tus reseñas y guardar tus mejores recuerdos.
+                            </p>
+                        </div>
+                        <button onclick="openArticleModal('Fotografía de Viajes', 'Un Local Guide Nivel 10 comparte trucos sobre iluminación natural, encuadres urbanos y paisajísticos, y cómo subir contenido relevante a Google Maps sin perder calidad.')" class="mt-6 text-gold-400 hover:text-gold-300 text-xs font-bold inline-flex items-center gap-2">
+                            Leer Artículo <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVATION & CONTACT WIDGET -->
+    <section id="reservas" class="py-24 bg-dark-800 border-t border-gray-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Contact Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-gold-500 font-semibold text-xs uppercase tracking-widest">Reserva Tu Estancia</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Planea Tu Siguiente Escapada</h2>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Completa el formulario para consultar disponibilidad en tiempo real. Nuestro equipo te contactará directamente por WhatsApp o correo con la mejor tarifa garantizada.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center gap-4 p-3 rounded-xl bg-dark-900 border border-gray-800">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Teléfono / WhatsApp</div>
+                                <div class="text-sm font-semibold text-white">+56 9 1234 5678</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-3 rounded-xl bg-dark-900 border border-gray-800">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Correo de Reservas</div>
+                                <div class="text-sm font-semibold text-white">reservas@vallecelestial.com</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-3 rounded-xl bg-dark-900 border border-gray-800">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center">
+                                <i class="fa-solid fa-location-pin"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Ubicación Principal</div>
+                                <div class="text-sm font-semibold text-white">Ruta 221, Km 45, Valle Verde</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Booking Form Card -->
+                <div class="lg:col-span-7">
+                    <div class="glass-panel p-8 rounded-3xl border border-gray-700/80 shadow-2xl">
+                        <h3 class="font-serif text-2xl font-bold text-white mb-6">Solicitud de Reserva</h3>
+                        
+                        <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-300 mb-1">Nombre Completo</label>
+                                    <input type="text" required placeholder="Ej. Carlos Mendoza" class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-300 mb-1">Correo Electrónico</label>
+                                    <input type="email" required placeholder="carlos@ejemplo.com" class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 text-sm">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-300 mb-1">Llegada (Check-in)</label>
+                                    <input type="date" id="checkin-date" required class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-gray-700 text-white focus:outline-none focus:border-gold-500 text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-300 mb-1">Salida (Check-out)</label>
+                                    <input type="date" id="checkout-date" required class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-gray-700 text-white focus:outline-none focus:border-gold-500 text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-300 mb-1">Huéspedes</label>
+                                    <select class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-gray-700 text-white focus:outline-none focus:border-gold-500 text-sm">
+                                        <option value="1">1 Persona</option>
+                                        <option value="2" selected>2 Personas</option>
+                                        <option value="4">Familia (3-4)</option>
+                                        <option value="6">Grupo (5+)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1">Tipo de Alojamiento</label>
+                                <select class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-gray-700 text-white focus:outline-none focus:border-gold-500 text-sm">
+                                    <option value="cabana-deluxe">Cabaña Luxury con Jacuzzi</option>
+                                    <option value="suite-vista">Suite Familiar Vista Valle</option>
+                                    <option value="eco-lodge">Glamping Eco-Lodge</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1">Mensaje o Requerimientos Especiales</label>
+                                <textarea rows="3" placeholder="Solicitud de transporte, alergias alimentarias, aniversarios..." class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 text-sm"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-dark-900 font-bold text-base transition-all shadow-lg shadow-gold-500/20 mt-2">
+                                Consultar Disponibilidad
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark-900 text-gray-400 py-12 border-t border-gray-800 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="space-y-4">
+                    <span class="font-serif text-xl font-bold text-white tracking-wider block">VALLE CELESTIAL</span>
+                    <p class="text-gray-400 leading-relaxed">
+                        Complejo turístico sustentable de alta gama. Naturaleza, alta gastronomía y aventura con respaldo de guía local de clase mundial.
+                    </p>
+                    <div class="flex space-x-3 pt-2">
+                        <a href="#" class="w-8 h-8 rounded-full bg-dark-800 border border-gray-700 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-dark-800 border border-gray-700 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-dark-800 border border-gray-700 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fa-brands fa-tripadvisor"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-dark-800 border border-gray-700 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fa-brands fa-google"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-wider mb-4">Navegación</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="hover:text-gold-400 transition-colors">Inicio</a></li>
+                        <li><a href="#experiencias" class="hover:text-gold-400 transition-colors">Experiencias</a></li>
+                        <li><a href="#instalaciones" class="hover:text-gold-400 transition-colors">Instalaciones</a></li>
+                        <li><a href="#guia-local" class="hover:text-gold-400 transition-colors">Guía Local & Maps</a></li>
+                        <li><a href="#blog" class="hover:text-gold-400 transition-colors">Blog de Viajes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Local Guide Badge -->
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-wider mb-4">Certificación Local</h4>
+                    <div class="p-3 rounded-xl bg-dark-800 border border-gray-800 space-y-2">
+                        <div class="flex items-center gap-2 text-gold-400 font-bold">
+                            <i class="fa-solid fa-certificate"></i> Google Local Guide Lv. 10
+                        </div>
+                        <p class="text-[11px] text-gray-400">
+                            Ficha oficial con más de 51M de vistas acumuladas y reseñas verificadas en la plataforma.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Col 4: Newsletter -->
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-wider mb-4">Boletín Informativo</h4>
+                    <p class="text-gray-400 mb-3">Recibe promociones exclusivas y rutas de temporada.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Tu correo" class="px-3 py-2 rounded-l-lg bg-dark-800 border border-gray-700 text-white focus:outline-none w-full text-xs">
+                        <button class="px-4 py-2 bg-gold-500 text-dark-900 font-bold rounded-r-lg hover:bg-gold-400">OK</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800 pt-6 flex flex-col sm:flex-row justify-between items-center text-gray-500">
+                <p>© 2026 Valle Celestial Resort. Todos los derechos reservados.</p>
+                <div class="flex space-x-4 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-gray-400">Privacidad</a>
+                    <a href="#" class="hover:text-gray-400">Términos</a>
+                    <a href="#" class="hover:text-gray-400">Mapa del Sitio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ARTICLE READ MODAL -->
+    <div id="article-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div class="glass-panel max-w-xl w-full p-6 rounded-2xl border border-gray-700 relative text-left">
+            <button onclick="closeArticleModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <span class="text-gold-500 text-xs font-bold uppercase tracking-wider">Publicación Blog</span>
+            <h3 id="modal-title" class="font-serif text-2xl font-bold text-white mt-1 mb-4"></h3>
+            <p id="modal-content" class="text-gray-300 text-sm leading-relaxed mb-6"></p>
+            <button onclick="closeArticleModal()" class="px-5 py-2.5 bg-gold-500 text-dark-900 font-bold text-xs rounded-xl hover:bg-gold-400">
+                Cerrar Lectura
+            </button>
+        </div>
+    </div>
+
+    <!-- BOOKING SUCCESS MODAL -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div class="glass-panel max-w-md w-full p-6 rounded-2xl border border-gold-500/40 text-center space-y-4">
+            <div class="w-16 h-16 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center mx-auto text-3xl">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-serif text-2xl font-bold text-white">¡Solicitud Recibida!</h3>
+            <p class="text-gray-300 text-sm">
+                Hemos procesado tu solicitud de reserva. Nuestro equipo de atención al cliente se pondrá en contacto contigo a la brevedad para confirmar disponibilidades.
+            </p>
+            <button onclick="closeBookingModal()" class="w-full py-3 bg-gold-500 text-dark-900 font-bold text-sm rounded-xl hover:bg-gold-400">
+                Aceptar
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Set default minimum dates for booking
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkin-date').min = today;
+        document.getElementById('checkout-date').min = today;
+
+        // Blog Category Filter
+        function filterBlog(category) {
+            const posts = document.querySelectorAll('.blog-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-gold-500', 'text-dark-900');
+                btn.classList.add('bg-dark-800', 'text-gray-300');
+            });
+
+            event.target.classList.remove('bg-dark-800', 'text-gray-300');
+            event.target.classList.add('bg-gold-500', 'text-dark-900');
+
+            posts.forEach(post => {
+                if (category === 'todos' || post.getAttribute('data-category') === category) {
+                    post.style.display = 'flex';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal for Article View
+        function openArticleModal(title, content) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-content').innerText = content;
+            document.getElementById('article-modal').classList.remove('hidden');
+        }
+
+        function closeArticleModal() {
+            document.getElementById('article-modal').classList.add('hidden');
+        }
+
+        // Form Submission Logic
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            document.getElementById('booking-modal').classList.remove('hidden');
+            document.getElementById('booking-form').reset();
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
